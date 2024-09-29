@@ -42,6 +42,13 @@ export default function TaskTable({
     router.get(route("task.index"), queryParams);
   };
 
+  const deleteTask = (task) => {
+    if (!window.confirm("Are you sure you want to delete the task?")) {
+      return;
+    }
+    router.delete(route("task.destroy", task.id));
+  };
+
   return (
     <>
       <div className="overflow-auto">
